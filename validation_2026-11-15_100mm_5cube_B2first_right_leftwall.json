@@ -1,0 +1,27 @@
+{
+  "milestone": "2026-11-15_100mm_5cube_B2first_right_leftwall",
+  "run_id": "run_100mm_5cube_B2first_right_leftwall_fix_20261115_212922_355284216",
+  "candidate_config": "candidate_scene_config_100mm_5cube_rail150.json",
+  "status": "OBSERVED_FAILURE",
+  "formal_pass": false,
+  "sequence": "A -> right-arm side contact -> direct -X push to left wall",
+  "left_arm_execution": "parked; no physical left-arm follow-up was executed",
+  "target_center_x_m": -0.20484971955636921,
+  "final_cube_position_m": [-0.19079679250717163, 0.7353757619857788, 0.7684676051139832],
+  "final_x_error_m": 0.014052927049197583,
+  "cube_rise_m": 0.006467605113983154,
+  "cube_orientation_error_rad": 0.13956021232130408,
+  "cube_orientation_error_deg": 7.998,
+  "right_plan_first_tcp_failure": {
+    "target_cube_x_m": -0.17292197192844444,
+    "position_error_m": 0.0021546407934674426,
+    "orientation_error_rad": 0.0329379331918577
+  },
+  "actual_unexpected_collisions": [],
+  "interpretation": "The right arm did not maintain the side-center TCP pose far enough toward the left wall, and the cube was lifted and tilted. The planner also reported a left-arm/link4-left-wall collision at a later hypothetical left-arm pose; that left-arm trajectory was not executed in this run.",
+  "teleport_cube": false,
+  "source_runtime_reports": [
+    "b2_first_right_only_run_100mm_5cube_B2first_right_leftwall_fix_20261115_212922_355284216.json",
+    "b2_first_right_plan_run_100mm_5cube_B2first_right_leftwall_fix_20261115_212922_355284216.json"
+  ]
+}
