@@ -1,0 +1,104 @@
+{
+  "name": "open_top_box_10cm_current",
+  "description": "当前 10 cm cube 单 cube 仿真环境；长度单位全部为 m，质量单位为 kg。",
+  "cube": {
+    "edge_m": 0.1,
+    "mass_kg": 0.37037037037037046,
+    "initial_center_m": [0.0, -0.3, 0.762],
+    "landing_center_m": [0.0, 0.736, 0.762]
+  },
+  "box": {
+    "inner_size_x_m": 0.56,
+    "inner_y_m": [0.278, 1.126],
+    "floor_top_m": 0.712,
+    "wall_height_m": 0.1,
+    "wall_thickness_m": 0.012,
+    "walls": {
+      "front_center_m": [0.0, 0.272, 0.762],
+      "back_center_m": [0.0, 1.132, 0.762],
+      "left_center_m": [-0.286, 0.702, 0.762],
+      "right_center_m": [0.286, 0.702, 0.762]
+    }
+  },
+  "robot": {
+    "model": "episode1_urdf_1113",
+    "hardware_configuration_fixed": true,
+    "bases": {
+      "left": [-0.38, 0.2, 0.745, 0.0],
+      "right": [0.38, 0.2, 0.745, 3.141592653589793]
+    },
+    "rails": {
+      "travel_limits_m": [-0.22, 0.65],
+      "beam_size_m": [0.15, 1.5, 0.025],
+      "carriage_size_m": [0.17, 0.16, 0.02]
+    },
+    "suction": {
+      "center_contact_required": true,
+      "left_face_normal_world": [1.0, 0.0, 0.0],
+      "right_face_normal_world": [-1.0, 0.0, 0.0],
+      "tool_and_suction_geometry_fixed": true
+    }
+  },
+  "task": {
+    "scope": "single_cube_A_B1_B2",
+    "phase_A": {
+      "goal": "双臂从供料位吸附 cube，抬升、越过前墙并放到 landing 位。",
+      "approach": "先在 cube 吸附点的水平面完成姿态和中心对齐，再沿面法向直线逼近并轻触吸附。",
+      "prohibited": [
+        "沿 cube 侧面垂直下降",
+        "吸附点偏离 cube 面中心",
+        "通过 teleport 移动 cube"
+      ]
+    },
+    "phase_B1": {
+      "goal": "左臂从 cube 前侧中心接触，沿 +Y 推到后墙并保持贴墙。",
+      "right_arm": "保持安全姿态，不参与 B1 的 cube 推送。"
+    },
+    "phase_B2": {
+      "goal": "右臂从 cube 右侧面中心接触，沿 -X 推向左墙；左臂维持 cube 的后墙接触。",
+      "left_wall_target_center_x_m": -0.23,
+      "back_wall_contact_required": true,
+      "center_contact_required": true,
+      "current_validation": "单 cube 左墙目标；不代表五 cube 码垛已经通过。"
+    },
+    "phase_B_exit": {
+      "goal": "只有在 cube 达到目标并确认吸附已释放后，才沿无碰撞路径回撤双臂。",
+      "release_requirement": "吸盘与 cube 分离后不得再次碰撞或把 cube 带起。"
+    }
+  },
+  "simulation_rules": {
+    "arm_speed_gate": false,
+    "hardware_velocity_limits": "deferred_to_sim2real",
+    "intermediate_tcp_gate": "do not abort the whole run only because of intermediate tracking error",
+    "final_contact_check": "right TCP must finish on the cube side-face center before B2 push",
+    "collision_check": "keep robot, wall, cube and inter-arm collision evidence",
+    "timeout": "no artificial run timeout",
+    "fixed_robot_or_suction_geometry": true,
+    "rail_extension": "allowed when rail travel is the limiting factor; rail is not a scene research constraint"
+  },
+  "abnormal_recovery": {
+    "record": [
+      "cube 被推歪或发生旋转",
+      "吸盘杯口偏角",
+      "吸盘释放后再次碰撞或带起 cube",
+      "机械臂与墙、cube 或另一机械臂碰撞"
+    ],
+    "first_response": "记录异常状态并重启仿真，暂不加入复杂规控去掩盖异常。",
+    "replanning": "上一阶段执行期间可提前进行 RRT；交接时确认 cube 位姿，匹配则复用路径，否则重新规划。"
+  },
+  "packing_requirement_for_10cm_cube": {
+    "cubes_per_row": 5,
+    "width_rule": "5*x + (0.01~0.03)",
+    "target_inner_width_m": "0.51~0.53",
+    "note": "这是码垛设计目标；当前验证环境 inner_width_x_m=0.56，二者不能混写成同一个场景。"
+  },
+  "research_status": {
+    "innovation_points_start_from": 0,
+    "innovation_points": [
+      "双臂中心吸附搬运与面中心接触保持",
+      "机械臂执行上一阶段时并行预规划下一阶段 RRT，并在交接处按 cube 实测位姿决定复用或重规划",
+      "记录推歪、偏角、释放碰撞等异常并通过重启仿真进入异常恢复研究"
+    ],
+    "claim": "本文件定义当前 10 cm 场景和任务要求，不声称上述创新点已经完成。"
+  }
+}
