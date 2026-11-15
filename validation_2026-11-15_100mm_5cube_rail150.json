@@ -1,0 +1,154 @@
+{
+  "milestone": "2026-11-15_100mm_5cube_rail150",
+  "run_id": "rerun_100mm_5cube_rail150_exp_20261115_201647_130785076",
+  "source_report": "physics_phase_b_rerun_100mm_5cube_rail150_exp_20261115_201647_130785076.json (local runtime output; full trace is not checked in)",
+  "status": "EXPERIMENTAL_OBSERVED",
+  "formal_pass": false,
+  "reason": "Full B2 push executed; anomalous result recorded before restarting simulation",
+  "teleport_cube": false,
+  "exit_attempted": false,
+  "goal_measurement": {
+    "cube_position_m": [
+      -0.19206249713897705,
+      1.0743767023086548,
+      0.769595205783844
+    ],
+    "cube_orientation_wxyz": [
+      0.9972188472747803,
+      0.007496946025639772,
+      -0.07359975576400757,
+      -0.00902451854199171
+    ],
+    "left_wall_gap_m": 0.005296302804646241,
+    "back_wall_gap_m": 7.536153355872099e-07,
+    "speed_m_s": 0.029544277116656303,
+    "angular_velocity_rad_s": [
+      0.09252101182937622,
+      0.07838132232427597,
+      -0.09965211153030396
+    ],
+    "target_center_x_m": -0.20497321018978057,
+    "target_source": "user_authorized_left_inner_wall_actual_OBB",
+    "position_error_x_m": 0.012910713050803518,
+    "physics_time_s": 198.25001033954322,
+    "physics_step": 23790,
+    "status": "BLOCKED"
+  },
+  "b2_contact_gate": {
+    "side": "right",
+    "phase": "B2_contact",
+    "expected_mouth_m": [
+      0.05011168968103257,
+      1.0758494652525261,
+      0.7622313699661697
+    ],
+    "actual_mouth_m": [
+      0.05029213022727431,
+      1.0760620687273472,
+      0.7617318515032396
+    ],
+    "actual_axis_world": [
+      -0.9999977044569763,
+      -2.0712392047102343e-05,
+      -0.0021425806343268183
+    ],
+    "expected_axis_world": [
+      -0.9999998565361373,
+      0.0005356557505483808,
+      7.885168016768241e-07
+    ],
+    "position_error_m": 0.0005720819198699027,
+    "orientation_error_rad": 0.002696566641914861,
+    "axis_angle_rad": 0.0022144036360402532
+  },
+  "b2_collision_diagnostics_unique": [
+    {
+      "phase": "B2_push_x",
+      "side": "left",
+      "hits": [
+        "wall_left:4"
+      ]
+    },
+    {
+      "phase": "B2_target_hold",
+      "side": "left",
+      "hits": [
+        "wall_left:4"
+      ]
+    }
+  ],
+  "unexpected_collisions": [
+    {
+      "step": 23570,
+      "phase": "B2_push_x",
+      "side": "left",
+      "hit": "joint_limit"
+    },
+    {
+      "step": 23570,
+      "phase": "B2_push_x",
+      "side": "right",
+      "hit": "joint_limit"
+    },
+    {
+      "step": 23574,
+      "phase": "B2_push_x",
+      "side": "left",
+      "hit": "joint_limit"
+    },
+    {
+      "step": 23574,
+      "phase": "B2_push_x",
+      "side": "right",
+      "hit": "joint_limit"
+    },
+    {
+      "step": 23594,
+      "phase": "B2_push_x",
+      "side": "left",
+      "hit": "joint_limit"
+    },
+    {
+      "step": 23594,
+      "phase": "B2_push_x",
+      "side": "right",
+      "hit": "joint_limit"
+    }
+  ],
+  "velocity_violations": [
+    {
+      "step": 23566,
+      "phase": "B2_push_x",
+      "side": "right",
+      "velocity": [
+        -0.15001164376735687,
+        -0.2073957622051239,
+        0.19199487566947937,
+        -0.6443483233451843,
+        0.5638107061386108,
+        -1.1769802570343018,
+        0.3856739401817322
+      ]
+    },
+    {
+      "step": 23590,
+      "phase": "B2_push_x",
+      "side": "right",
+      "velocity": [
+        -0.15001147985458374,
+        -0.41146060824394226,
+        0.012079862877726555,
+        -0.3293895423412323,
+        -0.09789672493934631,
+        -0.037944793701171875,
+        -1.079088568687439
+      ]
+    }
+  ],
+  "runtime_scope": {
+    "goal_positions": 5,
+    "actual_cube_entities": 1,
+    "note": "The current runner instantiates one /World/Cube. Five goal positions document the intended row layout; this is not a completed five-cube sequential packing run."
+  },
+  "interpretation": "A and B1 reached the observed run state; B2 executed experimentally but stopped with left-wall/link4 collision and a tilted, short-of-wall cube. This is a recorded failure checkpoint, not a pass."
+}

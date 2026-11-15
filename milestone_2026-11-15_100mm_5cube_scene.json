@@ -1,0 +1,358 @@
+{
+  "name": "100mm_cube_5goal_51cm_inner_width_rail150",
+  "description": "100 mm cube candidate with five packing goal positions and 1.5 m rails.",
+  "units": {
+    "length": "m",
+    "mass": "kg",
+    "angle": "rad"
+  },
+  "cube": {
+    "size_m": 0.1,
+    "mass_kg": 0.37037037037037046,
+    "supply_center_m": [
+      0,
+      -0.3,
+      0.762
+    ],
+    "landing_center_m": [
+      0,
+      0.736,
+      0.762
+    ],
+    "goal_centers_m": [
+      [
+        -0.205,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        0.205,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        -0.105,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        0.105,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        0.0,
+        1.0759999999999998,
+        0.762
+      ]
+    ]
+  },
+  "box": {
+    "inner_size_m": [
+      0.51,
+      0.8479999999999999
+    ],
+    "inner_y_m": [
+      0.278,
+      1.126
+    ],
+    "floor_top_m": 0.712,
+    "wall_height_m": 0.1,
+    "wall_thickness_m": 0.012,
+    "static_boxes": [
+      [
+        "table",
+        [
+          0,
+          0.6,
+          0.675
+        ],
+        [
+          1.0,
+          2.4,
+          0.05
+        ]
+      ],
+      [
+        "floor",
+        [
+          0,
+          0.702,
+          0.706
+        ],
+        [
+          0.534,
+          0.8719999999999999,
+          0.012
+        ]
+      ],
+      [
+        "wall_front",
+        [
+          0,
+          0.272,
+          0.762
+        ],
+        [
+          0.534,
+          0.012,
+          0.1
+        ]
+      ],
+      [
+        "wall_back",
+        [
+          0,
+          1.132,
+          0.762
+        ],
+        [
+          0.534,
+          0.012,
+          0.1
+        ]
+      ],
+      [
+        "wall_left",
+        [
+          -0.261,
+          0.702,
+          0.762
+        ],
+        [
+          0.012,
+          0.8479999999999999,
+          0.1
+        ]
+      ],
+      [
+        "wall_right",
+        [
+          0.261,
+          0.702,
+          0.762
+        ],
+        [
+          0.012,
+          0.8479999999999999,
+          0.1
+        ]
+      ],
+      [
+        "supply",
+        [
+          0,
+          -0.31,
+          0.706
+        ],
+        [
+          0.16,
+          0.14,
+          0.012
+        ]
+      ]
+    ]
+  },
+  "robot": {
+    "model": "episode1_urdf_1113",
+    "bases": {
+      "left": [
+        -0.38,
+        0.2,
+        0.745,
+        0.0
+      ],
+      "right": [
+        0.38,
+        0.2,
+        0.745,
+        3.141592653589793
+      ]
+    },
+    "tool": {
+      "kind": "suction",
+      "asset": "tool_design/suction_tool_v1.usda",
+      "asset_sha256": "840637a1d364af9b2a9ecdc1da172878ebe81a56919824be2c83dbff91ecfd6f",
+      "tip_local": [
+        0.0,
+        0.0,
+        0.0525
+      ],
+      "collision_bounds_local": [
+        [
+          -0.02199999988079071,
+          -0.02199999988079071,
+          0.0
+        ],
+        [
+          0.02199999988079071,
+          0.02199999988079071,
+          0.05249999836087227
+        ]
+      ],
+      "mass": 0.03542404974173541,
+      "static_friction": 1.5,
+      "dynamic_friction": 1.2,
+      "central_contacts": {
+        "left": "left upper side face; local +Z -> world +X",
+        "right": "right upper side face; local +Z -> world -X"
+      }
+    },
+    "rails": {
+      "left": {
+        "anchor_xyz": [
+          -0.38,
+          0.2,
+          0.7125
+        ],
+        "beam_size": [
+          0.15,
+          2.35,
+          0.025
+        ],
+        "travel_limits_m": [
+          -0.22,
+          1.5
+        ],
+        "carriage_size": [
+          0.17,
+          0.16,
+          0.02
+        ],
+        "carriage_mass_kg": 1.0,
+        "stiffness_N_m": 60000,
+        "damping_N_s_m": 6000,
+        "max_force_N": 1000,
+        "max_velocity_m_s": 0.15,
+        "beam_local_center": [
+          0.0,
+          0.425,
+          0.0
+        ]
+      },
+      "right": {
+        "anchor_xyz": [
+          0.38,
+          0.2,
+          0.7125
+        ],
+        "beam_size": [
+          0.15,
+          2.35,
+          0.025
+        ],
+        "travel_limits_m": [
+          -0.22,
+          1.5
+        ],
+        "carriage_size": [
+          0.17,
+          0.16,
+          0.02
+        ],
+        "carriage_mass_kg": 1.0,
+        "stiffness_N_m": 60000,
+        "damping_N_s_m": 6000,
+        "max_force_N": 1000,
+        "max_velocity_m_s": 0.15,
+        "beam_local_center": [
+          0.0,
+          0.425,
+          0.0
+        ]
+      }
+    },
+    "simulation_parameters": {
+      "effort_Nm": [
+        18,
+        18,
+        12,
+        5,
+        3,
+        2
+      ],
+      "velocity_rad_s": null,
+      "stiffness": 3000,
+      "damping": 150,
+      "source": "No simulated arm velocity gate; hardware limits are deferred to sim2real."
+    }
+  },
+  "candidate_metadata": {
+    "candidate_id": "100mm_5cube_positions_51cm_rail150",
+    "wall_inner_width_m": 0.51,
+    "cube_size_m": 0.1,
+    "distance_ratio": 3.5479452054794525,
+    "supply_to_landing_m": 1.036,
+    "landing_back_clearance_m": 0.33999999999999986,
+    "base_y_m": 0.2,
+    "wall_height_m": 0.1,
+    "landing_path_index": 90,
+    "supply_path_index": 0,
+    "formal_pass": false,
+    "a_exit_clear_z_m": 0.12,
+    "cpu_transport": {
+      "samples": 810,
+      "max_position_error_m": 0.0013589420746651616,
+      "max_orientation_error_rad": 0.002853724523550485,
+      "max_dual_hold_cube_disagreement_m": 0.0018995840326493424,
+      "bad_count": 0
+    },
+    "wall_inner_width_source_m": 0.56,
+    "side_wall_shift_each_m": 0.025000000000000022,
+    "five_cube_row_capacity": 5,
+    "five_cube_occupied_width_m": 0.5,
+    "five_cube_unused_width_m": 0.01,
+    "packing_plan": "packing_plan_51cm_alternate.json",
+    "path_planning_status": "5_GOAL_POSITIONS_PHYSICS_PENDING",
+    "contact_centered": true,
+    "contact_centered_at": "2026-11-13",
+    "contact_centering_method": "Re-solved every A joint_paths and waypoint TCP to cube side-face center with existing bounded IK; 0.2 mm normal gap retained.",
+    "rail_extension": {
+      "direction_world": "+Y",
+      "travel_limits_m": [
+        -0.22,
+        1.5
+      ],
+      "beam_length_m": 2.35,
+      "beam_local_center_m": [
+        0.0,
+        0.425,
+        0.0
+      ],
+      "rail_base_and_front_end_preserved": true
+    },
+    "goal_row_y_m": 1.0759999999999998,
+    "goal_positions_m": [
+      [
+        -0.205,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        0.205,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        -0.105,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        0.105,
+        1.0759999999999998,
+        0.762
+      ],
+      [
+        0.0,
+        1.0759999999999998,
+        0.762
+      ]
+    ]
+  },
+  "task_scope": {
+    "five_goal_positions": true,
+    "actual_runtime_entities": 1,
+    "note": "The current runner still instantiates one /World/Cube; these are five planned packing positions, not a completed five-cube sequential run."
+  }
+}
